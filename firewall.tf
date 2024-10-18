@@ -7,7 +7,7 @@ resource "google_compute_firewall" "serverpod-instance" {
   source_ranges = ["35.191.0.0/16", "130.211.0.0/22"]
 
   allow {
-    protocol = "http"
+    protocol = "tcp"
     ports    = ["8080-8082"]
   }
 
@@ -23,7 +23,7 @@ resource "google_compute_firewall" "serverpod-instance-ssh" {
   source_ranges = ["0.0.0.0/0"]
 
   allow {
-    protocol = "http"
+    protocol = "tcp"
     ports    = ["22"]
   }
 

@@ -126,7 +126,7 @@ resource "google_compute_backend_service" "api" {
     capacity_scaler = 1.0
   }
 
-  health_checks = [google_compute_health_check.serverpod-balancer.id]
+
 
   port_name = "api"
 }
@@ -142,7 +142,7 @@ resource "google_compute_backend_service" "insights" {
     capacity_scaler = 1.0
   }
 
-  health_checks = [google_compute_health_check.serverpod-balancer.id]
+
 
   port_name = "insights"
 }
@@ -159,7 +159,7 @@ resource "google_compute_backend_service" "web" {
     capacity_scaler = 1.0
   }
 
-  health_checks = [google_compute_health_check.serverpod-balancer.id]
+
 
   port_name = "web"
 }
@@ -172,12 +172,3 @@ resource "google_compute_backend_bucket" "storage" {
   enable_cdn  = false
 }
 
-resource "google_compute_health_check" "serverpod-balancer" {
-  name               = "serverpod-${var.runmode}-health-check"
-  timeout_sec        = 5
-  check_interval_sec = 5
-
-  tcp_health_check {
-    port = "8080"
-  }
-}
